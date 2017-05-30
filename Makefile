@@ -2,6 +2,7 @@ PACKAGES = prometheus \
 alertmanager \
 node_exporter \
 mysqld_exporter \
+redis_exporter \
 blackbox_exporter
 
 .PHONY: $(PACKAGES)
@@ -10,8 +11,8 @@ all: $(PACKAGES)
 
 $(PACKAGES):
 	docker run --rm \
-		-v ${PWD}/$@:/rpmbuild/SOURCES \
-		-v ${PWD}/_dist:/rpmbuild/RPMS/x86_64 \
+		-v ${PWD}/$@:/rpmbuild/SOURCES:z \
+		-v ${PWD}/_dist:/rpmbuild/RPMS/x86_64:z \
 		lest/centos7-rpm-builder \
 		build-spec SOURCES/$@.spec
 
