@@ -3,6 +3,7 @@ alertmanager \
 node_exporter \
 mysqld_exporter \
 redis_exporter \
+apache_exporter \
 blackbox_exporter
 
 .PHONY: $(PACKAGES)
